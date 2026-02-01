@@ -833,14 +833,116 @@
         }
 
         /* Responsive */
+        /* Mobile Navigation Toggle */
+        .nav-toggle {
+            display: none;
+        }
+
+        .nav-toggle-label {
+            display: none;
+            cursor: pointer;
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            height: 22px;
+            width: 28px;
+        }
+
+        .nav-toggle-label span,
+        .nav-toggle-label span::before,
+        .nav-toggle-label span::after {
+            display: block;
+            background: var(--primary);
+            height: 3px;
+            width: 28px;
+            border-radius: 2px;
+            position: absolute;
+            transition: all 0.3s ease;
+        }
+
+        .nav-toggle-label span {
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .nav-toggle-label span::before {
+            content: '';
+            top: -8px;
+        }
+
+        .nav-toggle-label span::after {
+            content: '';
+            top: 8px;
+        }
+
+        .nav-toggle:checked ~ .nav-toggle-label span {
+            background: transparent;
+        }
+
+        .nav-toggle:checked ~ .nav-toggle-label span::before {
+            transform: rotate(45deg);
+            top: 0;
+        }
+
+        .nav-toggle:checked ~ .nav-toggle-label span::after {
+            transform: rotate(-45deg);
+            top: 0;
+        }
+
+        /* Tablet Styles - 968px and below */
         @media (max-width: 968px) {
+            nav .container {
+                position: relative;
+            }
+
+            .nav-toggle-label {
+                display: block;
+            }
+
+            nav ul {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(10, 22, 40, 0.98);
+                flex-direction: column;
+                gap: 0;
+                padding: 0;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+                border-bottom: 2px solid rgba(0, 212, 255, 0.3);
+            }
+
+            .nav-toggle:checked ~ ul {
+                max-height: 400px;
+            }
+
+            nav ul li {
+                text-align: center;
+            }
+
+            nav ul a {
+                display: block;
+                padding: 1rem;
+                border-bottom: 1px solid rgba(0, 212, 255, 0.1);
+            }
+
             .hero-content {
                 grid-template-columns: 1fr;
                 text-align: center;
+                gap: 2rem;
+                padding: 0 1rem;
             }
 
             .hero-text {
                 text-align: center;
+                order: 2;
+            }
+
+            .hero-image {
+                order: 1;
             }
 
             .hero-text h1 {
@@ -851,25 +953,65 @@
                 font-size: 1.2rem;
             }
 
+            .hero-text p {
+                font-size: 1rem;
+            }
+
             .hero-image img {
-                max-width: 350px;
+                max-width: 300px;
                 margin: 0 auto;
+            }
+
+            .cta-buttons {
+                justify-content: center;
             }
 
             .about-content {
                 grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+
+            .stat-card {
+                padding: 1.5rem;
+            }
+
+            .stat-card .number {
+                font-size: 2rem;
+            }
+
+            .project-card {
+                padding: 2rem;
             }
 
             .project-with-image {
                 grid-template-columns: 1fr;
             }
 
-            nav ul {
-                display: none;
+            .project-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
             }
 
             .section-header h2 {
                 font-size: 2rem;
+            }
+
+            .section-header p {
+                font-size: 1rem;
+            }
+
+            section {
+                padding: 4rem 0;
+            }
+
+            .container {
+                padding: 0 1.5rem;
             }
 
             .timeline {
@@ -878,6 +1020,243 @@
 
             .leadership-image-container {
                 height: 250px;
+            }
+
+            .contact-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .contact-link {
+                padding: 1.2rem 2rem;
+            }
+        }
+
+        /* Mobile Styles - 600px and below */
+        @media (max-width: 600px) {
+            nav {
+                padding: 0.8rem 1rem;
+            }
+
+            .logo {
+                font-size: 1.2rem;
+            }
+
+            .logo::before {
+                font-size: 1.4rem;
+            }
+
+            .hero {
+                padding-top: 70px;
+                min-height: auto;
+                padding-bottom: 3rem;
+            }
+
+            .hero-text h1 {
+                font-size: 1.8rem;
+                line-height: 1.2;
+            }
+
+            .hero-text .subtitle {
+                font-size: 1rem;
+            }
+
+            .hero-text p {
+                font-size: 0.95rem;
+            }
+
+            .hero-image img {
+                max-width: 250px;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                gap: 0.8rem;
+            }
+
+            .btn {
+                padding: 0.9rem 1.5rem;
+                font-size: 0.9rem;
+                width: 100%;
+                text-align: center;
+            }
+
+            section {
+                padding: 3rem 0;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+
+            .section-header {
+                margin-bottom: 2rem;
+            }
+
+            .section-header h2 {
+                font-size: 1.6rem;
+            }
+
+            .section-header p {
+                font-size: 0.9rem;
+            }
+
+            .about-text h3 {
+                font-size: 1.5rem;
+            }
+
+            .about-text p {
+                font-size: 1rem;
+            }
+
+            .stats {
+                grid-template-columns: 1fr 1fr;
+                gap: 0.8rem;
+            }
+
+            .stat-card {
+                padding: 1rem;
+            }
+
+            .stat-card .number {
+                font-size: 1.5rem;
+            }
+
+            .stat-card .label {
+                font-size: 0.75rem;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .skill-category {
+                padding: 1.5rem;
+            }
+
+            .skill-category h3 {
+                font-size: 1.2rem;
+            }
+
+            .skill-tag {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.8rem;
+            }
+
+            .project-card {
+                padding: 1.5rem;
+                border-radius: 15px;
+            }
+
+            .project-header h3 {
+                font-size: 1.3rem;
+            }
+
+            .project-description {
+                font-size: 0.95rem;
+            }
+
+            .project-tech {
+                gap: 0.4rem;
+            }
+
+            .tech-tag {
+                padding: 0.3rem 0.7rem;
+                font-size: 0.75rem;
+            }
+
+            .timeline::before {
+                left: 0;
+            }
+
+            .timeline {
+                padding-left: 1.5rem;
+            }
+
+            .timeline-item::before {
+                left: -1.5rem;
+                width: 10px;
+                height: 10px;
+            }
+
+            .timeline-item h3 {
+                font-size: 1.1rem;
+            }
+
+            .timeline-item h4 {
+                font-size: 1rem;
+            }
+
+            .leadership-card {
+                padding: 1.5rem;
+            }
+
+            .leadership-card h3 {
+                font-size: 1.3rem;
+            }
+
+            .leadership-image-container {
+                height: 200px;
+            }
+
+            .contact-link {
+                padding: 1rem 1.5rem;
+                flex-direction: column;
+                text-align: center;
+                gap: 0.5rem;
+            }
+
+            .contact-link span:first-child {
+                font-size: 1.5rem;
+            }
+
+            .contact-link span:last-child {
+                font-size: 0.9rem;
+            }
+
+            footer {
+                padding: 1.5rem;
+            }
+
+            footer p {
+                font-size: 0.85rem;
+            }
+
+            /* Hide floating medical icons on mobile */
+            .medical-icons {
+                display: none;
+            }
+        }
+
+        /* Small Mobile - 400px and below */
+        @media (max-width: 400px) {
+            .hero-text h1 {
+                font-size: 1.5rem;
+            }
+
+            .hero-text .subtitle {
+                font-size: 0.9rem;
+            }
+
+            .hero-image img {
+                max-width: 200px;
+            }
+
+            .section-header h2 {
+                font-size: 1.4rem;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .stat-card .number {
+                font-size: 1.8rem;
+            }
+
+            .stat-card .label {
+                font-size: 0.8rem;
             }
         }
 
@@ -907,6 +1286,10 @@
     <nav>
         <div class="container">
             <div class="logo">WJB</div>
+            <input type="checkbox" id="nav-toggle" class="nav-toggle">
+            <label for="nav-toggle" class="nav-toggle-label">
+                <span></span>
+            </label>
             <ul>
                 <li><a href="#about">About</a></li>
                 <li><a href="#skills">Skills</a></li>
@@ -1365,7 +1748,7 @@
             <div class="contact-content">
                 <p>Whether you're looking for a health tech AI engineer, interested in BayFlowHealth.AI, or want to collaborate on healthcare innovation, I'd love to hear from you.</p>
                 <div class="contact-links">
-                    <a href="/cdn-cgi/l/email-protection#7c0b151010151d11521e0e1d0f14191d0e3c13090810131317521f1311" class="contact-link">
+                    <a href="mailto:william.brashear@outlook.com" class="contact-link">
                         <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
                         Email Me
                     </a>
@@ -1390,10 +1773,15 @@
     </footer>
 
     <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-        // Smooth scroll for navigation links
+        // Smooth scroll for navigation links and close mobile menu
+        const navToggle = document.getElementById('nav-toggle');
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
+                // Close mobile menu if open
+                if (navToggle) {
+                    navToggle.checked = false;
+                }
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
                     target.scrollIntoView({
@@ -1423,3 +1811,9 @@
         document.querySelectorAll('.project-card, .timeline-item, .skill-category, .stat-card, .leadership-card').forEach(el => {
             el.style.opacity = '0';
             el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
